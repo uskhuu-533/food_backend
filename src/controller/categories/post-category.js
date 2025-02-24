@@ -4,8 +4,7 @@ export const postCategory = async (req, res) => {
   try {
     const { title } = req.body;
     if(title){
-
-    const foods = []
+const foods = []
     if (title) {
       const result = new Category({title, foods});
       await result.save();

@@ -13,6 +13,7 @@ export const checkPassword = async (req, res) => {
     
     
     const passwordCorrect = await bcrypt.compare(password, user.hashedPassword);
+console.log(passwordCorrect);
 
     if (passwordCorrect) {
       return res.status(200).send("Signed in successfully");
