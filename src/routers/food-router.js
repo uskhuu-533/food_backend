@@ -6,7 +6,7 @@ import { deleteFood } from "../controller/foods/delete-foods.js";
 
 export const foodRouter = e.Router()
 
-foodRouter.post('/:category', postFood)
-foodRouter.get('/:category', getFoods)
+foodRouter.post('/:id', postFood)
+foodRouter.get('/:id', getFoods)
 foodRouter.put('/:id', putFood)
 foodRouter.delete('/:id', deleteFood)

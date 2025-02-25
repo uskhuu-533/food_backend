@@ -6,9 +6,9 @@ const foodsSchema = new mongoose.Schema(
         food_description: { type: String, require: true },
         price : {type:String, require : true},
         food_image : {type: String , require : true},
-        category : {type : String, require : true},
+        category : {type : mongoose.Types.ObjectId, ref:"caregories" , require : true},
         createdAt : {type : Date, default:new Date(), require:false},
-        updatedAt : {type :Date }
+        updatedAt : {type :Date, require:false }
       }
     )
 export const Foods = mongoose.model("foods", foodsSchema)

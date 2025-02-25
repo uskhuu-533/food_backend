@@ -11,8 +11,6 @@ export const deleteUsers = async (req, res) => {
     if(user){
     const id = user._id
     const result = await User.findByIdAndDelete(id)
-
-    fs.writeFileSync("src/db/users.json", JSON.stringify(users))
     res.send("Deleted");
     }else{
         res.status(400).send("user not found")
