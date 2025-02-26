@@ -6,15 +6,13 @@ export const putFood = async (req, res) => {
   const { category, food_name, food_description, food_image, price } = req.body;
   
   try {
-    // Validate MongoDB ObjectId format
+
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({
         success: false,
         message: "Invalid food ID format"
       });
     }
-
-    // Create update object with updatedAt timestamp
     const update = {
       category,
       food_image,

@@ -4,6 +4,9 @@ import { userRouter} from "./routers/user-router.js";
 import mongoose from "mongoose";
 import { categoryRouter } from "./routers/category-router.js";
 import { foodRouter } from "./routers/food-router.js";
+import 'dotenv/config'
+import {  orderItemsRouter } from "./routers/foodOrderItems.router.js";
+import { orderRouter } from "./routers/order.router.js";
 
 
 const app = express();
@@ -16,7 +19,9 @@ app.use(express.json());
 app.use(`/users`, userRouter);
 app.use("/category", categoryRouter)
 app.use('/food', foodRouter)
-const mongoURI = 'mongodb+srv://uskhuunymdavaa9:YmffufWPuzbqrpVv@cluster0.vnn3t.mongodb.net/food?retryWrites=true&w=majority&appName=Cluster0'
+app.use('/foodorderitems', orderItemsRouter)
+app.use('/foodorder', orderRouter)
+const mongoURI = process.env.MY_DB_URL
 const connectDB = async () => {
   try{
     await mongoose.connect(mongoURI)
@@ -33,14 +38,4 @@ connectDB()
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`);
 });
-// {
-//     "userName" : "12",
-//     "password" : "12",
-//     "firstName" : "a",
-//     "lastName" : "b"
-//     }
 
-// {
-//     "firstName" : "a",
-//     "updatedName" : "c"
-//     }

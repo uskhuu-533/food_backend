@@ -1,18 +1,12 @@
 import { Foods } from "../../models/foods.model.js";
 
 export const getFoods = async (req, res) => {
-    const {id} = req.params
-    console.log(id);
-    
+    const {category} = req.params    
   try {
-    if(id){
-    if(id == "1"){
-      const Allfoods = await Foods.find()
-      res.status(200).send(Allfoods)
-    }else{
-      const foods  = await Foods.find({category:id})
+    if(category){
+      const foods  = await Foods.find({category:category})
       res.status(200).send(foods)
-    }}else{
+    }else{
       res.status(500).send("category not found getFoods")
     }
   } catch (err) {

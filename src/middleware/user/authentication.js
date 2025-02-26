@@ -1,4 +1,5 @@
-import { User } from "../../../models/users.model.js"
+import { User } from "../../models/users.model.js"
+
 
 export const authentication = async (req, res, next) => {
     try {

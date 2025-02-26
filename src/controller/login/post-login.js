@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import { User } from "../../models/users.model.js";
-
+import jsonwebtoken from "jsonwebtoken"
+import 'dotenv/config'
 export const checkPassword = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -13,13 +14,14 @@ export const checkPassword = async (req, res) => {
     
     
     const passwordCorrect = await bcrypt.compare(password, user.hashedPassword);
-console.log(passwordCorrect);
 
-    if (passwordCorrect) {
-      return res.status(200).send("Signed in successfully");
-    } else {
+    if (!passwordCorrect) {
       return res.status(400).send("Wrong password or email");
-    }
+    } 
+    const token = jsonwebtoken.sign({UserId:user._id}, process.env.JWT_TOKEN_SECRET_KEY, { expiresIn:"1h"})
+    console.log(token);
+    
+    res.send(token).status(200)
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: "Internal Server Error" });

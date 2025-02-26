@@ -1,5 +1,5 @@
 import { Foods } from "../../models/foods.model.js";
-import { Category } from "../../models/categories.model.js";
+
 
 export const postFood = async (req, res) => {
     const {food_description, food_name, price, food_image, category} = req.body;
