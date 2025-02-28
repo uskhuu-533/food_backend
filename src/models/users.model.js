@@ -4,7 +4,7 @@ const usersSchema = new mongoose.Schema({
   email: { type: String, require: true },
   hashedPassword: { type: String, require: true },
   phoneNumber: { type: String, require: true },
-  addres: { type: String, require: true, default: "" },
+  address: { type: String, require: true, default: "" },
   role: {
     type: String,
     require: true,
@@ -12,7 +12,7 @@ const usersSchema = new mongoose.Schema({
     default: "USER",
   },
   odreredFood: [{ type: mongoose.Types.ObjectId ,  ref: "foodorder" , require:true}],
-  addres: { type: String, require: true },
+  address: { type: String, require: true },
   isVerrified: { type: Boolean, require: true },
 });
 export const User = mongoose.model("User", usersSchema);
