@@ -9,10 +9,12 @@ import { deleteItems } from "../controller/foodOrderItems/delete-Food-Order-Item
 import { putOrderItem } from "../controller/foodOrderItems/put-order-item.js";
 import { isZero } from "../middleware/order-Items/isZeroCount.js";
 import { deleteOneItem } from "../controller/foodOrderItems/delete-One-Item.js";
+import { getOneItem } from "../controller/foodOrderItems/get-Item-id.js";
 
 export const orderItemsRouter = e.Router()
 
 orderItemsRouter.get('/', authenticationJWT, getFoodOrderItems)
+orderItemsRouter.get('/:id', getOneItem)
 orderItemsRouter.post('/:id', authenticationJWT , isValidOrderItem, isAdded, postFoodOrderItems)
 orderItemsRouter.delete('/', authenticationJWT, deleteItems)
 orderItemsRouter.put('/:id',isZero, putOrderItem)
