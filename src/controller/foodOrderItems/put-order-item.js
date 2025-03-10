@@ -16,8 +16,7 @@ export const putOrderItem = async (req, res) => {
       { _id: id },
       { quantity: existingItem.quantity + count },
       {
-        new: true,
-        runValidators: true,
+        new: true
       }
     );
 

@@ -5,10 +5,11 @@ import { putFood } from "../controller/foods/put-food.js";
 import { deleteFood } from "../controller/foods/delete-foods.js";
 import { getAllFood } from "../controller/foods/get-All-Food.js";
 import { getOneFood } from "../controller/foods/get-One-Food.js";
+import { isfoodValid } from "../middleware/food/isdetailvalid.js";
 
 export const foodRouter = e.Router()
 
-foodRouter.post('/:id', postFood)
+foodRouter.post('/:id',isfoodValid, postFood)
 foodRouter.get('/:category', getFoods)
 foodRouter.put('/:id', putFood)
 foodRouter.delete('/:id', deleteFood)

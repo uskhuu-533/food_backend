@@ -5,7 +5,7 @@ export const postFoodOrderItems = async (req, res) => {
   const { id } = req.params;
 
   const quantity = parseInt(count)
-  console.log(typeof(quantity));
+
   try {
     const foodOrderItems = new FoodOrderItems({
       food: id,
@@ -13,8 +13,7 @@ export const postFoodOrderItems = async (req, res) => {
       user : req.userId
     });
     await foodOrderItems.save();
-    res.send(foodOrderItems).status(200);
+    res.status(200).send(foodOrderItems);
   } catch (error) {
-    res.send(`failed to add cart : ${error}`).status(500);
-  }
-};
+    res.status(500).send(error)
+}}
