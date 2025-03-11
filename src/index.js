@@ -14,8 +14,6 @@ const port = 3000;
 connectDB();
 app.use(cors({
   origin: "*", // Allows requests from any origin
-  methods: ["DELETE", "PUT", "GET", "POST", "PATCH"], // Still restrict to specific methods
-  allowedHeaders: ["Content-Type", "Authorization"], // Still restrict headers
 }));
 
 
