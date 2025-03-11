@@ -12,24 +12,11 @@ import connectDB from "./connectDB.js";
 const app = express();
 const port = 3000;
 connectDB();
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      const allowedOrigins = [
-        "https://food-delivery-user-lemon.vercel.app",
-        "http://localhost:3001",
-        "http://localhost:3002",
-      ];
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    methods: ["DELETE", "PUT", "GET", "POST", "PATCH"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+app.use(cors({
+  origin: "*", // Allows requests from any origin
+  methods: ["DELETE", "PUT", "GET", "POST", "PATCH"], // Still restrict to specific methods
+  allowedHeaders: ["Content-Type", "Authorization"], // Still restrict headers
+}));
 
 
 
