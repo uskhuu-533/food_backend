@@ -7,6 +7,7 @@ import { foodRouter } from "./routers/food-router.js";
 import 'dotenv/config'
 import {  orderItemsRouter } from "./routers/foodOrderItems.router.js";
 import { orderRouter } from "./routers/order.router.js";
+import connectDB from "./connectDB.js";
 
 
 const app = express();
@@ -21,19 +22,7 @@ app.use("/category", categoryRouter)
 app.use('/food', foodRouter)
 app.use('/foodorderitems', orderItemsRouter)
 app.use('/foodorder', orderRouter)
-const mongoURI = process.env.MY_DB_URL
-const connectDB = async () => {
-  try{
-    await mongoose.connect(mongoURI)
-    console.log("mongoDB connected");
-    
-  }catch(err){
-    console.log(err)
-  }
-}
 connectDB()
-
-
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`);
 });
