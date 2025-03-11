@@ -12,7 +12,7 @@ import connectDB from "./connectDB.js";
 
 const app = express();
 const port = 3000;
-
+connectDB()
 
 app.use(cors({ origin: ["http://localhost:3001", "http://localhost:3002"] }));
 //path => GET, POST, PUT, DELETE
@@ -22,7 +22,7 @@ app.use("/category", categoryRouter)
 app.use('/food', foodRouter)
 app.use('/foodorderitems', orderItemsRouter)
 app.use('/foodorder', orderRouter)
-connectDB()
+
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`);
 });
