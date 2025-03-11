@@ -14,7 +14,7 @@ const app = express();
 const port = 3000;
 connectDB()
 
-app.use(cors({ origin: ["http://localhost:3001", "http://localhost:3002"] }));
+app.use(cors());
 //path => GET, POST, PUT, DELETE
 app.use(express.json()); 
 app.use(`/users`, userRouter);
