@@ -16,7 +16,7 @@ connectDB();
 app.use(
   cors({
     origins: [
-      "https://food-delivery-user-lemon.vercel.app/login",
+      "https://food-delivery-user-lemon.vercel.app",
       " http://localhost:3001",
       " http://localhost:3002",
     ],
