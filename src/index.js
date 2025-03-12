@@ -12,11 +12,7 @@ import connectDB from "./connectDB.js";
 const app = express();
 const port = 3000;
 connectDB();
-app.use(cors({
-  origin: "*", // Allows requests from any origin
-}));
-
-
+app.use(cors());
 
 //path => GET, POST, PUT, DELETE
 app.use(express.json());

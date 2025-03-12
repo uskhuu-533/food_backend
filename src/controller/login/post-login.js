@@ -18,9 +18,7 @@ export const checkPassword = async (req, res) => {
     if (!passwordCorrect) {
       return res.status(400).send("Wrong password or email");
     } 
-    const token = jsonwebtoken.sign({UserId:user._id}, process.env.JWT_TOKEN_SECRET_KEY, { expiresIn:"8h"})
-    console.log(token);
-    
+    const token = jsonwebtoken.sign({UserId:user._id, email:user.email, Exp: Math.floor(Date.now()/1000)+60*60}, process.env.JWT_TOKEN_SECRET_KEY, { expiresIn:"8h"})
     res.send(token).status(200)
   } catch (err) {
     console.error(err);

@@ -1,16 +1,13 @@
 {
     "version": 2,
+    "rewrites": [
+      { "source": "/(.*)", "destination": "/src/index.js" }
+    ],
     "builds": [
       {
         "src": "src/index.js",
         "config": { "runtime": "nodejs18.x" },
         "use": "@vercel/node"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "src/index.js"
       }
     ]
   }

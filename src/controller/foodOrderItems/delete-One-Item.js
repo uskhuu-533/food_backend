@@ -2,6 +2,8 @@ import { FoodOrderItems } from "../../models/foodOrderItem.model.js"
 
 export const deleteOneItem = async (req, res) => {
     const { id } = req.params
+    console.log(id);
+    
     try {
         const deletedItem = await FoodOrderItems.findByIdAndDelete({_id:id})
         if (!deletedItem) {
