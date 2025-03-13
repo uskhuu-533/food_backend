@@ -1,13 +1,14 @@
 import express from "express";
 import cors from "cors";
-import { userRouter } from "./routers/user-router.js";
-import mongoose from "mongoose";
-import { categoryRouter } from "./routers/category-router.js";
-import { foodRouter } from "./routers/food-router.js";
+
 import "dotenv/config";
-import { orderItemsRouter } from "./routers/foodOrderItems.router.js";
-import { orderRouter } from "./routers/order.router.js";
+
 import connectDB from "./connectDB.js";
+import { userRouter } from "./routers/user.routes.js";
+import { orderRouter } from "./routers/order.routes.js";
+import { orderItemsRouter } from "./routers/foodOrderItems.routes.js";
+import { categoryRouter } from "./routers/category.routes.js";
+import { foodRouter } from "./routers/food.routes.js";
 
 const app = express();
 const port = 3000;
