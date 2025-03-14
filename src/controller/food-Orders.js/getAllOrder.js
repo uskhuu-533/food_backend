@@ -1,6 +1,8 @@
 import { FoodOrder } from "../../models/foodOrder.model.js"
 
 export const getAllOrder = async (req, res) => {
+  const { page } = req.params
+  const pageInt = parseInt(page)
     try {
        const orders = await FoodOrder.aggregate([
              {
@@ -69,9 +71,9 @@ export const getAllOrder = async (req, res) => {
              },
            ]);
        
-           console.log(orders);
-       
-           res.status(200).send(orders);
+
+           const slicedOrder = orders.slice((pageInt-1)*12, pageInt*12)
+           res.status(200).json({data:slicedOrder, totalPage:Math.floor(orders.length/12)+1, totalResults:orders.length});
     } catch (error) {
         res.send(error).status(500)
     }

@@ -9,7 +9,7 @@ import { isfoodValid } from "../middleware/food/isdetailvalid.js";
 
 export const foodRouter = e.Router()
 
-foodRouter.post('/:id',isfoodValid, postFood)
+foodRouter.post('/:category',isfoodValid, postFood)
 foodRouter.get('/:category', getFoods)
 foodRouter.put('/:id', putFood)
 foodRouter.delete('/:id', deleteFood)

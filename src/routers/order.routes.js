@@ -8,5 +8,5 @@ import { putOrder } from "../controller/food-Orders.js/putOrder.js";
 export const orderRouter = e.Router();
 orderRouter.post("/", authenticationJWT, postFoodOrder);
 orderRouter.get("/", authenticationJWT, isOrder, getOrder);
-orderRouter.get("/admin", getAllOrder);
+orderRouter.get("/admin/:page", getAllOrder);
 orderRouter.put('/', putOrder)
