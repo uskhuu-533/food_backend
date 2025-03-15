@@ -1,12 +1,15 @@
 import { FoodOrder } from "../../models/foodOrder.model.js"
 
 export const getAllOrder = async (req, res) => {
-  const { page } = req.params
+  const { page,  } = req.params
+  const { startDate, endDate } = req.query;
   const pageInt = parseInt(page)
     try {
+      const start = startDate ? new Date(startDate) : new Date("2025-01-01");
+      const end = endDate ? new Date(endDate) : new Date();
        const orders = await FoodOrder.aggregate([
              {
-               $match: {}
+               $match: { createdAt: { $gte: start, $lte: end },}
              },
              {
                $lookup: {
