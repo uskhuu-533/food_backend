@@ -6,7 +6,6 @@ export const authenticationJWT = (req, res, next) => {
   try {    
     const decoded = jsonwebtoken.verify(token, process.env.JWT_TOKEN_SECRET_KEY);
     console.log(decoded.email);
-    
     req.userId = decoded.UserId;
     next();
   } catch (error) {

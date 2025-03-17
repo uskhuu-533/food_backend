@@ -2,8 +2,9 @@ import mongoose from "mongoose";
 import { Foods } from "../../models/foods.model.js";
 
 export const putFood = async (req, res) => {
-  const { id } = req.params;
-  const { category, food_name, food_description, food_image, price } = req.body;
+  const { id, category } = req.params;
+  const { food_name, food_description, food_image, price } = req.body;
+  console.log(category);
   
   try {
 
