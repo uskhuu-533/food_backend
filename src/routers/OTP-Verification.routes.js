@@ -5,7 +5,6 @@ import crypto from 'crypto';
 import 'dotenv/config'
 
 const OptRouter = express.Router();
-console.log(process.env.EMAIL_SERVICE);
 
 // In-memory OTP store (in production, use a database)
 const otpStore = {};
