@@ -9,6 +9,7 @@ import { orderRouter } from "./routers/order.routes.js";
 import { orderItemsRouter } from "./routers/foodOrderItems.routes.js";
 import { categoryRouter } from "./routers/category.routes.js";
 import { foodRouter } from "./routers/food.routes.js";
+import OptRouter from "./routers/OTP-Verification.routes.js";
 
 const app = express();
 const port = 3000;
@@ -22,6 +23,7 @@ app.use("/category", categoryRouter);
 app.use("/food", foodRouter);
 app.use("/foodorderitems", orderItemsRouter);
 app.use("/foodorder", orderRouter);
+app.use('/opt', OptRouter)
 
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`);

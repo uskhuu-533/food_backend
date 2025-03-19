@@ -9,6 +9,6 @@ export const authenticationJWT = (req, res, next) => {
     req.userId = decoded.UserId;
     next();
   } catch (error) {
-    res.status(401).send({ error: "Invalid token" });
+    res.status(401).send({ error: "Invalid token" }); 
   }
 };
