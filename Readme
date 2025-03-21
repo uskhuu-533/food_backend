@@ -1,0 +1,10 @@
+//food
+get all food :         /food
+get food by category : /food/:category
+put food by id :       /food/:foodId/:newCategory
+delete food by id :    /food/:id
+
+//category
+get category : 
+
+
