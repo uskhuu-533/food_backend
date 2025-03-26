@@ -16,10 +16,10 @@ export const checkPassword = async (req, res) => {
     const passwordCorrect = await bcrypt.compare(password, user.hashedPassword);
 
     if (!passwordCorrect) {
-      return res.status(400).send("Wrong password or email");
+      res.send("Wrong password or email").status(400);
     } 
     const token = jsonwebtoken.sign({UserId:user._id, email:user.email}, process.env.JWT_TOKEN_SECRET_KEY, { expiresIn:"8h"})
-    res.send(token).status(200)
+    res.send({token:token, role : user.role}).status(200)
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: "Internal Server Error" });
