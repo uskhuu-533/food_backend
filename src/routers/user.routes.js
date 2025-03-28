@@ -8,6 +8,7 @@ import { authentication } from "../middleware/user/authentication.js";
 import { authenticationJWT } from "../middleware/user/jwt-Auth.js";
 import { editUser } from "../controller/users/edit-user.js";
 import { getUserAddress } from "../controller/users/getAddress.js";
+import { changePassword } from "../controller/users/change-password.js";
 
 
 
@@ -20,3 +21,4 @@ userRouter.delete(`/`, deleteUsers);
 userRouter.put(`/`, authenticationJWT, editUser)
 userRouter.post('/login', checkPassword)
 userRouter.get('/address', authenticationJWT, getUserAddress)
+userRouter.put('/password', changePassword)

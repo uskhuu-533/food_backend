@@ -163,6 +163,8 @@ OptRouter.post("/resend-otp", async (req, res) => {
         .json({ success: false, message: "Email is required" });
     }
     const otp = generateOTP();
+    console.log(otp);
+    
     otpStore[email] = {
       otp,
       expiresAt: Date.now() + 10 * 60 * 1000,
@@ -184,3 +186,35 @@ OptRouter.post("/resend-otp", async (req, res) => {
 });
 
 export default OptRouter;
+
+OptRouter.post('/change-pass', async (req, res)=>{
+  try {
+    const { email } = req.body
+    const user = await User.findOne({email:email})
+    if (!user) {
+      res.status(400).json({
+        success :false,
+        message : "user not found"
+      })
+    }else{
+    const otp = generateOTP()
+
+    
+    otpStore[email] = {
+      otp,
+      expiresAt: Date.now() + 10 * 60 * 1000, 
+      attempts: 0, 
+    };
+    await sendOTPEmail(email, otp)
+    res.status(200).json({
+      success : true,
+      message : "Success sent otp"
+    })}
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({
+      success : false,
+      message:"Failed to send code"
+    })
+  }
+})

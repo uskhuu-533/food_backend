@@ -6,19 +6,14 @@ export const checkPassword = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    
     if (!user) {
       return res.status(400).send("User not found");
-    }
-    console.log(user);
-    
-    
+    }    
     const passwordCorrect = await bcrypt.compare(password, user.hashedPassword);
-
     if (!passwordCorrect) {
       res.send("Wrong password or email").status(400);
     } 
-    const token = jsonwebtoken.sign({UserId:user._id, email:user.email}, process.env.JWT_TOKEN_SECRET_KEY, { expiresIn:"8h"})
+    const token = jsonwebtoken.sign({UserId:user._id, email:user.email, role:user.role}, process.env.JWT_TOKEN_SECRET_KEY, { expiresIn:"8h"})
     res.send({token:token, role : user.role}).status(200)
   } catch (err) {
     console.error(err);
