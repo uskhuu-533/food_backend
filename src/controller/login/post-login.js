@@ -11,7 +11,7 @@ export const checkPassword = async (req, res) => {
     }    
     const passwordCorrect = await bcrypt.compare(password, user.hashedPassword);
     if (!passwordCorrect) {
-      res.send("Wrong password or email").status(400);
+      res.send("Wrong password or email").status(404);
     } 
     const token = jsonwebtoken.sign({UserId:user._id, email:user.email, role:user.role}, process.env.JWT_TOKEN_SECRET_KEY, { expiresIn:"8h"})
     res.send({token:token, role : user.role}).status(200)
