@@ -73,9 +73,8 @@ export const getAllOrder = async (req, res) => {
                },
              },
            ]);
-       
-
-           const slicedOrder = orders.slice((pageInt-1)*12, pageInt*12)
+           const reversedOrder = orders.reverse()
+           const slicedOrder = reversedOrder.slice((pageInt-1)*12, pageInt*12)
            res.status(200).json({data:slicedOrder, totalPage:Math.floor(orders.length/12)+1, totalResults:orders.length});
     } catch (error) {
         res.send(error).status(500)

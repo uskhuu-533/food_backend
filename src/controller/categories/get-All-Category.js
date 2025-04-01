@@ -1,4 +1,5 @@
 import { Category } from "../../models/categories.model.js";
+import { Foods } from "../../models/foods.model.js";
 
 export const getAllCategory = async (req, res) => {
   try {
@@ -21,7 +22,8 @@ export const getAllCategory = async (req, res) => {
         }
       }
     ])
-    res.status(200).send(categories)
+    const foods = await Foods.find()
+    res.status(200).send({categories:categories, foods:foods.length})
   } catch (err) {
     res.status(500).send(err);
     console.log(err);
