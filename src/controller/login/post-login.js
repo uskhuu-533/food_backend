@@ -7,7 +7,7 @@ export const checkPassword = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).send("User not found");
+      return res.status(404).send("User not found");
     }    
     const passwordCorrect = await bcrypt.compare(password, user.hashedPassword);
     if (!passwordCorrect) {
