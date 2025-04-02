@@ -11,8 +11,9 @@ const usersSchema = new mongoose.Schema({
     enum: ["ADMIN", "USER"],
     default: "USER",
   },
-  odreredFood: [{ type: mongoose.Types.ObjectId ,  ref: "foodorder" , require:true}],
+  orderedFood: [{ type: mongoose.Types.ObjectId ,  ref: "foodorder" , require:true}],
   address: { type: String, require: true },
   isVerrified: { type: Boolean, require: true },
+  createdAt : {type : Date, require:true, default: Date.now()}
 });
 export const User = mongoose.model("User", usersSchema);

@@ -10,6 +10,9 @@ import { editUser } from "../controller/users/edit-user.js";
 import { getUserAddress } from "../controller/users/getAddress.js";
 import { changePassword } from "../controller/users/change-password.js";
 import { checkEmail } from "../controller/users/check-email.js";
+import { adminAuhh } from "../middleware/user/admin-auth.js";
+import { getAllUser } from "../controller/users/get-all-user.js";
+import { changeRole } from "../controller/users/change-role.js";
 
 
 
@@ -24,3 +27,5 @@ userRouter.post('/login', checkPassword)
 userRouter.get('/address', authenticationJWT, getUserAddress)
 userRouter.put('/password', changePassword)
 userRouter.post('/email', checkEmail)
+userRouter.get('/admin/:page', adminAuhh, getAllUser)
+userRouter.put("/role/:userId", adminAuhh, changeRole)

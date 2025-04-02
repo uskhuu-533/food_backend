@@ -10,13 +10,22 @@ export const postFoodOrder = async (req, res) => {
       totalPrice: totalPrice,
     });
     await order.save();
-    const updateUser = await User.findByIdAndUpdate(
-      { _id: req.userId },
-      { $push: { foodOrderItems: order._id } },
-      {new:true}
+    console.log(order._id);
+    
+    const updatedUser = await User.findByIdAndUpdate(
+      req.userId,
+      { $push: { orderedFood: order._id } }, // Fixed the typo here
+      { new: true }
     );
+    console.log(updatedUser);
+    
+    if (!updatedUser) {
+      return res.status(404).json({ error: "User not found" });
+    }
     res.send(order);
   } catch (error) {
+    console.log(error);
+    
     res.status(500).send("Server error");
   }
 };
