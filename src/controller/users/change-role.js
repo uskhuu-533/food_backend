@@ -9,6 +9,7 @@ export const changeRole = async (req, res) => {
             {role:role},
             {new:true}
         )
+        res.status(200).send('succes')
     } catch (error) {
         res.status(500).send(error)
     }
